@@ -1,0 +1,17 @@
+@import '../variables';
+
+.comment_box {
+    max-width: 1200px;
+    min-width: 300px;
+    border: 1px solid $black-coffee;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 5px 5px 10px $black-coffee;
+    margin: 20px auto;
+    padding: 20px 20px;
+    textarea {
+        width: 300px;
+        height: 20px;
+        resize: none;
+    }
+}

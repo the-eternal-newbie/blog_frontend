@@ -1,0 +1,17 @@
+html {
+    body {
+        font-family: $font;
+        background-color: $white;
+        color: $black-coffee;
+        padding: 20px 20px;
+        button {
+            @include button-bg($rusty-red);
+            color: $white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: $font;
+        }
+    }
+}

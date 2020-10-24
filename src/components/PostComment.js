@@ -1,19 +1,19 @@
 import React from 'react';
+import '../sass/components/_commentbox.scss';
 
 const PostComment = (props) => {
     return (
-        <form onSubmit={props.saveComment}>
-            <h1>Post a comment</h1>
+        <form onSubmit={props.saveComment} className="comment_box">
             <textarea
                 onChange={props.saveContentToState}
-                placeholder="contents"
+                placeholder="What are you thinking..."
                 cols="41"
                 rows="8"
                 required
                 ref={props.getContent}
             ></textarea>
             <br />
-            <button>Send comment</button>
+            <button>Save comment</button>
         </form>
     );
 };

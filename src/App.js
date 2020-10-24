@@ -1,13 +1,12 @@
 import React from 'react';
 
-import ListComments from './components/DisplayComments';
-// import PostComment from './components/PostComment';
-// import Posts from './components/Post';
+import CommentsBoard from './components/CommentsBoard';
+import './sass/app.scss';
 
 const App = () => {
     return (
         <div>
-            <ListComments />
+            <CommentsBoard />
         </div>
     );
 };

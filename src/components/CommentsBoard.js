@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import PostComment from './PostComment';
 import EditComment from './EditComment';
-import Post from './Post';
+import Comment from './Comment';
+import '../sass/components/_commentsboard.scss';
 
 let i = 0;
-const DisplayComments = () => {
+const CommentsBoard = () => {
     const [content, setContent] = useState('');
     const [editCommentId, setEditCommentId] = useState('');
     const [allComments, setAllComments] = useState([]);
@@ -62,29 +63,8 @@ const DisplayComments = () => {
         setAllComments(modifiedComment);
     };
 
-    if (isCreateComment) {
-        return (
-            <PostComment
-                saveContentToState={saveContentToState}
-                getContent={getContent}
-                saveComment={saveComment}
-            />
-        );
-    } else if (isEditComment) {
-        const comment = allComments.find(
-            (comment) => comment.id === editCommentId
-        );
-        return (
-            <EditComment
-                content={comment.content}
-                updateComment={updateComment}
-                saveContentToState={saveContentToState}
-            />
-        );
-    }
-
     return (
-        <>
+        <div className="comments_board">
             <h2>All comments</h2>
             {!allComments.length ? (
                 <div>
@@ -92,20 +72,39 @@ const DisplayComments = () => {
                 </div>
             ) : (
                 allComments.map((comment) => {
-                    return (
-                        <Post
-                            id={comment.id}
-                            key={comment.id}
-                            content={comment.content}
-                            editComment={editComment}
-                            deleteComment={deleteComment}
-                        />
-                    );
+                    if (isEditComment && comment.id === editCommentId) {
+                        return (
+                            <EditComment
+                                content={comment.content}
+                                updateComment={updateComment}
+                                saveContentToState={saveContentToState}
+                            />
+                        );
+                    } else {
+                        return (
+                            <Comment
+                                id={comment.id}
+                                key={comment.id}
+                                content={comment.content}
+                                editComment={editComment}
+                                deleteComment={deleteComment}
+                            />
+                        );
+                    }
                 })
+            )}
+            {isCreateComment ? (
+                <PostComment
+                    saveContentToState={saveContentToState}
+                    getContent={getContent}
+                    saveComment={saveComment}
+                />
+            ) : (
+                <div></div>
             )}
             <br />
             <button onClick={toggleCreateComment}>Post a comment</button>
-        </>
+        </div>
     );
 };
-export default DisplayComments;
+export default CommentsBoard;

@@ -1,18 +1,17 @@
 import React from 'react';
+import '../sass/components/_commentbox.scss';
 
 const EditComment = (props) => {
     return (
-        <form>
-            <h1>Edit Comment</h1>
+        <form className="comment_box">
             <textarea
                 defaultValue={props.content}
-                placeholder="contents"
                 onChange={props.saveContentToState}
                 rows="8"
                 cols="41"
             ></textarea>
             <br />
-            <button onClick={props.updateComment}>Update Comment</button>
+            <button onClick={props.updateComment}>Edit Comment</button>
         </form>
     );
 };
