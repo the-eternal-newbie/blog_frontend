@@ -4,11 +4,14 @@
     max-width: 1400px;
     min-width: 300px;
     overflow: hidden;
-    h2, h3 {
+    h2 {
+        font-size: 35px;
+    }
+    h2,
+    .empty {
         padding: 0px 80px;
     }
     .post {
         margin: 0px 80px;
     }
-
 }

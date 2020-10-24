@@ -9,6 +9,17 @@
     box-shadow: 5px 5px 10px $black-coffee;
     margin: 20px auto;
     padding: 20px 20px;
+    .author {
+        font-size: 25px;
+        display: inline;
+    }
+    .date {
+        font-size: 10px;
+        display: inline;
+        margin-left: 10px;
+        color: $french-raspberry;
+        font-style: italic;
+    }
     p {
         color: $black-coffee;
     }
