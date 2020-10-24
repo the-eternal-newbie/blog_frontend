@@ -1,10 +1,9 @@
 import React from 'react';
 
-const Post = () => {
+const Post = props => {
     return (
         <section>
-            <h3>Author will appear here</h3>
-            <p>Comment content will appear here</p>
+            <p>{props.content}</p>
             <button>Edit</button>
             <button>Delete</button>
         </section>

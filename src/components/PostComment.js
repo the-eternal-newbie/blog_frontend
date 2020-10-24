@@ -1,12 +1,12 @@
 import React from 'react';
 
-const PostComment = (props) => {
+const PostComment = props => {
     return (
         <form onSubmit={props.saveComment}>
             <h1>Post a comment</h1>
             <textarea
-                onChange={props.saveCommentContentToState}
-                placeholder="content"
+                onChange={props.saveContentToState}
+                placeholder="contents"
                 cols="41"
                 rows="8"
                 required
