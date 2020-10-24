@@ -1,11 +1,10 @@
 import axios from 'axios';
-import React, { useState, createRef, Component } from 'react';
+import React, { createRef, Component } from 'react';
 import PostComment from './PostComment';
 import EditComment from './EditComment';
 import Comment from './Comment';
 import '../sass/components/_commentsboard.scss';
 
-let i = 0;
 export default class CommentsBoard extends Component {
     constructor() {
         super()
@@ -18,17 +17,10 @@ export default class CommentsBoard extends Component {
         isCreateComment: false,
         isEditComment: false,
     }
-    // const [content, setContent] = useState('');
-    // const [editCommentId, setEditCommentId] = useState('');
-    // const [allComments, setAllComments] = useState([]);
-    // const [isCreateComment, setIsCreateComment] = useState(false);
-    // const [isEditComment, setIsEditComment] = useState(false);
 
-    // const getContent = useRef();
     componentDidMount() {
         axios.get(`http://127.0.0.1:8000/users/comments/`).then(res => {
             const comments = res.data;
-            console.log(comments);
             this.setState({allComments: comments})
         });
     }
@@ -42,46 +34,40 @@ export default class CommentsBoard extends Component {
     };
 
     toggleCreateComment = () => {
-        this.setState({isCreateComment: !this.isCreateComment});
+        this.setState({isCreateComment: !this.state.isCreateComment});
     };
 
     toggleEditComment = () => {
-        this.setState({isEditComment: !this.isEditComment});
+        this.setState({isEditComment: !this.state.isEditComment});
     };
 
     saveComment = (event) => {
-        const comment = {
+        event.preventDefault();
+        axios.post(`http://127.0.0.1:8000/users/comments/`, { 
             userId: 1,
-            content: event.target.value
-        }
-        axios.post(`localhost:8000/users/comments`, { comment }).then(res => {
-            console.log(res);
-            console.log(res.data);
-        })
-        this.getContent.current.value = '';
-        this.toggleCreateComment();
+            content: this.getContent.current.value 
+        }).then(() => {
+            this.componentDidMount();
+            this.toggleCreateComment();
+        });
+        
     };
 
     updateComment = (event) => {
         event.preventDefault();
-        const updatedComment = this.state.allComments.map((comment) => {
-            if (comment.id === this.state.editCommentId) {
-                return {
-                    ...comment,
-                    content: "lala" || comment.content,
-                };
-            }
-            return comment;
+        axios.put(`http://127.0.0.1:8000/users/comments/${this.state.editCommentId}`, { 
+            content: this.state.content
+        }).then(() => {
+            this.componentDidMount();
+            this.toggleEditComment();
         });
-        this.setState({allComments: updatedComment});
-        this.toggleEditComment();
     };
 
      deleteComment = (id) => {
-        const modifiedComment = this.state.allComments.filter(
-            (comment) => comment.id !== id
-        );
-        this.setState({allComments: modifiedComment});
+        axios.delete(`http://127.0.0.1:8000/users/comments/${id}`)
+        .then(() => {
+            this.componentDidMount();
+        });
     };
 
     render() {

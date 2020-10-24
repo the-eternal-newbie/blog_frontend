@@ -8,11 +8,9 @@ const Comment = (props) => {
             {
                 (new Date().toDateString() === new Date(props.createdAt).toDateString()) ?
                 (<><h4 className="date">Today at {
-                    new Date().toLocaleString('en-US', {
-                        hour: new Date(props.createdAt).getHours(),
-                        minute: new Date(props.createdAt).getMinutes()
-                    })
-                }</h4></>) :
+                    new Date(props.createdAt).getHours() + ':' + new Date(props.createdAt).getMinutes()
+                    }
+                </h4></>) :
                 (<><h4 className="date">on {new Date(props.createdAt).toDateString()}</h4></>)
             }
             <p>{props.content}</p>

@@ -11,7 +11,7 @@ const EditComment = (props) => {
                 cols="41"
             ></textarea>
             <br />
-            <button onClick={props.updateComment}>Save Comment</button>
+            <button>Cancel</button><button onClick={props.updateComment}>Save Comment</button>
         </form>
     );
 };
