@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PostComment = props => {
+const PostComment = (props) => {
     return (
         <form onSubmit={props.saveComment}>
             <h1>Post a comment</h1>

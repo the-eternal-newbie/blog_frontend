@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Post = props => {
+const Post = ({ content, editComment, id, deleteComment }) => {
     return (
         <section>
-            <p>{props.content}</p>
-            <button>Edit</button>
-            <button>Delete</button>
+            <p>{content}</p>
+            <button onClick={() => editComment(id)}>Edit</button>
+            <button onClick={() => deleteComment(id)}>Delete</button>
         </section>
     );
 };

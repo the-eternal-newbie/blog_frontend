@@ -1,17 +1,18 @@
 import React from 'react';
 
-const EditComment = () => {
+const EditComment = (props) => {
     return (
         <form>
             <h1>Edit Comment</h1>
             <textarea
+                defaultValue={props.content}
                 placeholder="contents"
+                onChange={props.saveContentToState}
                 rows="8"
                 cols="41"
-                required
             ></textarea>
             <br />
-            <button>Update Comment</button>
+            <button onClick={props.updateComment}>Update Comment</button>
         </form>
     );
 };
