@@ -67,9 +67,9 @@ const CommentsBoard = () => {
         <div className="comments_board">
             <h2>All comments</h2>
             {!allComments.length ? (
-                <div>
-                    <h3>There are not comments yet!</h3>
-                </div>
+                // <div>
+                <h3>There are not comments yet!</h3>
+                // </div>
             ) : (
                 allComments.map((comment) => {
                     if (isEditComment && comment.id === editCommentId) {
@@ -103,7 +103,7 @@ const CommentsBoard = () => {
                 <div></div>
             )}
             <br />
-            <button onClick={toggleCreateComment}>Post a comment</button>
+            <button className="post" onClick={toggleCreateComment}>Post a comment</button>
         </div>
     );
 };

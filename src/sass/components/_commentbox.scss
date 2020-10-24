@@ -9,9 +9,26 @@
     box-shadow: 5px 5px 10px $black-coffee;
     margin: 20px auto;
     padding: 20px 20px;
+
     textarea {
-        width: 300px;
-        height: 20px;
+        border: 0px;
+        height: 5px;
+        width: 1100px;
+        min-height: 45px;
+        outline: none;
+        box-shadow: none;
         resize: none;
+        margin: 20px;
+        font-family: $font;
+        font-size: large;
+    }
+
+    button {
+        float: right;
+    }
+
+    textarea::focus {
+        overflow: hidden;
+        outline:none;
     }
 }
